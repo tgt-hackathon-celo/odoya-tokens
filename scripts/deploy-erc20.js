@@ -8,13 +8,13 @@ async function main() {
   const balance = await deployer.getBalance();
   console.log("Account balance:", (await deployer.getBalance()).toString());
 
-  if (balance > 0) {
-    const Token = await ethers.getContractFactory("FundoTGT");
-    const token = await Token.deploy();
-    console.log("Token address:", token.address);
-  } else {
+  if (balance < 1) {
     console.log("pop up the account");
+    return;
   }
+  const Token = await ethers.getContractFactory("FundoTGT");
+  const token = await Token.deploy();
+  console.log("Token address:", token.address);
 }
 
 main()
