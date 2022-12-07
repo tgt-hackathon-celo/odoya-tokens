@@ -8,7 +8,7 @@ async function main() {
   const balance = await deployer.getBalance();
   console.log("Account balance:", (await deployer.getBalance()).toString());
 
-  if (balance < 1) {
+  if (balance < 100000000000) {
     console.log("pop up the account");
     return;
   }
