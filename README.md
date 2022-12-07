@@ -12,3 +12,10 @@ npx hardhat node
 npx hardhat run scripts/deploy.js
 npx hardhat run scripts/deploy-erc20.js --network alfajores
 ```
+
+## Dependencias
+
+```shell
+yarn add @openzeppelin/contracts
+yarn add --dev hardhat-celo dotenv @openzeppelin/hardhat-upgrades
+```
