@@ -7,6 +7,7 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Burnable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
+import "@openzeppelin/contracts/utils/Strings.sol";
 
 contract OdoyaNFT is ERC721, ERC721Enumerable, ERC721URIStorage, ERC721Burnable, Ownable {
     using Counters for Counters.Counter;
@@ -19,11 +20,12 @@ contract OdoyaNFT is ERC721, ERC721Enumerable, ERC721URIStorage, ERC721Burnable,
         return "https://tgt-hackathon-celo.github.io/hardhat-boilerplace/nft/";
     }
 
-    function safeMint(address to, string memory uri) public onlyOwner {
+    function safeMint(address to) public onlyOwner {
         uint256 tokenId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
         _safeMint(to, tokenId);
-        _setTokenURI(tokenId, uri);
+        string memory tokenUri = string(abi.encodePacked(Strings.toString(tokenId),".json"));
+        _setTokenURI(tokenId, tokenUri);
     }
 
     // The following functions are overrides required by Solidity.
@@ -47,6 +49,19 @@ contract OdoyaNFT is ERC721, ERC721Enumerable, ERC721URIStorage, ERC721Burnable,
     {
         return super.tokenURI(tokenId);
     }
+
+    function safeTransferFrom(
+        address from,
+        address to,
+        uint256 tokenId
+    ) public virtual override(ERC721, IERC721) {   }
+
+    function safeTransferFrom(
+        address from,
+        address to,
+        uint256 tokenId,
+        bytes memory data
+    ) public virtual override(ERC721, IERC721) {   }
 
     function supportsInterface(bytes4 interfaceId)
         public

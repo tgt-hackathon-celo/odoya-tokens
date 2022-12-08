@@ -2133,8 +2133,8 @@
       ]
     },
     "/Users/jeffprestes/projetos/go/src/github.com/tgt-hackathon-celo/odoya-tokens/contracts/OdoyaNFT.sol": {
-      "lastModificationDate": 1670507533806,
-      "contentHash": "fcd8235ff73f902283fd639b01b654ea",
+      "lastModificationDate": 1670524430137,
+      "contentHash": "153534f819f4546575abc59eadf51fba",
       "sourceName": "contracts/OdoyaNFT.sol",
       "solcConfig": {
         "version": "0.8.17",
@@ -2166,7 +2166,8 @@
         "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
         "@openzeppelin/contracts/token/ERC721/extensions/ERC721Burnable.sol",
         "@openzeppelin/contracts/access/Ownable.sol",
-        "@openzeppelin/contracts/utils/Counters.sol"
+        "@openzeppelin/contracts/utils/Counters.sol",
+        "@openzeppelin/contracts/utils/Strings.sol"
       ],
       "versionPragmas": [
         "^0.8.9"
@@ -2176,8 +2177,8 @@
       ]
     },
     "/Users/jeffprestes/projetos/go/src/github.com/tgt-hackathon-celo/odoya-tokens/contracts/OdoyaRecompensa.sol": {
-      "lastModificationDate": 1670510751373,
-      "contentHash": "e455b3e8247e4021bdc02273ca755d72",
+      "lastModificationDate": 1670524835048,
+      "contentHash": "c2eff91b085f0f2c652f32ea174d350f",
       "sourceName": "contracts/OdoyaRecompensa.sol",
       "solcConfig": {
         "version": "0.8.17",

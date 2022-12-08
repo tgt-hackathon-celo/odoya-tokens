@@ -25,7 +25,7 @@ describe("OdoyaRecompensa", function () {
     });
   });
 
-  describe("AddActions", function () {    
+  describe("AddActions", async function () {    
     it("Should register action", async function () {
       const { odoyaToken, owner } = await loadFixture(deploy);
       await odoyaToken.addRegenAction(owner.getAddress(), "Teste de Limpeza Praia Boqueirão", "-23.5489,-46.6388", 1870595359, ethers.BigNumber.from("10000"));
@@ -33,12 +33,16 @@ describe("OdoyaRecompensa", function () {
     });
 
     it("Should mint a reward", async function () {
+      const ONE_WEEK_IN_SECS = 7 * 24 * 60 * 60;
+      const networkNow = (await time.latest()) + 1;
+      const nextWeek = networkNow + ONE_WEEK_IN_SECS;
       const { odoyaToken, owner } = await loadFixture(deploy);
-      await odoyaToken.addRegenAction(owner.getAddress(), "Teste de Limpeza Praia Boqueirão", "-23.5489,-46.6388", 1870595359, ethers.BigNumber.from("10000"));
+      await odoyaToken.addRegenAction(owner.getAddress(), "Teste de Limpeza Praia Boqueirão", "-23.5489,-46.6388", nextWeek, ethers.BigNumber.from("10000"));
+      await time.increaseTo(nextWeek);
       await odoyaToken.mint("0x263C3Ab7E4832eDF623fBdD66ACee71c028Ff591", ethers.BigNumber.from("1000"), 1);
       const totalSupply = await odoyaToken.totalSupply();
       const expectedTotalSupply = ethers.BigNumber.from("1000");
-      console.log(totalSupply, expectedTotalSupply);
+      console.log("Should mint a reward", totalSupply, expectedTotalSupply);
       expect(totalSupply).to.equals(expectedTotalSupply);
     });
   });

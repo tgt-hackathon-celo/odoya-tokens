@@ -25,6 +25,8 @@ contract OdoyaRecompensa is ERC20, ERC20Burnable, Pausable, Ownable, ERC20Permit
     uint public regenActionCounter;
     mapping (uint => RegenAction) public regenActionPlanned;    
 
+    event NewRegenAction(string title, uint when, string where);
+
     constructor() ERC20("Odoya Recompensa", "ODOYA") ERC20Permit("OdoyaRecompensa") {
         regenActionCounter = 0;
         addLeader(msg.sender);
@@ -49,6 +51,8 @@ contract OdoyaRecompensa is ERC20, ERC20Burnable, Pausable, Ownable, ERC20Permit
         }
         ra.totalRewardsAvailable = (ra.totalRewardsAvailable - _amount);
         _mint(_to, _amount);
+        OdoyaNFT nft = OdoyaNFT(ra.nft);
+        nft.safeMint(_to);
     }
 
     function _beforeTokenTransfer(address from, address to, uint256 amount)
@@ -67,7 +71,8 @@ contract OdoyaRecompensa is ERC20, ERC20Burnable, Pausable, Ownable, ERC20Permit
         OdoyaNFT nft = new OdoyaNFT(_title, symbol());
         RegenAction memory ra = RegenAction(_leader, address(nft), _title, _place, _when, _totalRewards, _totalRewards, true);
         regenActionCounter++;
-        regenActionPlanned[regenActionCounter] = ra;        
+        regenActionPlanned[regenActionCounter] = ra;    
+        emit NewRegenAction(_title, _when, _place);    
     }
 
     function addLeader(address _newLeader) public onlyOwner {
@@ -78,4 +83,5 @@ contract OdoyaRecompensa is ERC20, ERC20Burnable, Pausable, Ownable, ERC20Permit
         require(allowedLeaders[_oldLeader], "Or leader not exist or it was already removed");
         allowedLeaders[_oldLeader] = false;
     }
+
 }
