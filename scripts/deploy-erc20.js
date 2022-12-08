@@ -12,7 +12,7 @@ async function main() {
     console.log("pop up the account");
     return;
   }
-  const Token = await ethers.getContractFactory("FundoTGT");
+  const Token = await ethers.getContractFactory("contracts/OdoyaRecompensa.sol:OdoyaRecompensa");
   const token = await Token.deploy();
   console.log("Token address:", token.address);
 }

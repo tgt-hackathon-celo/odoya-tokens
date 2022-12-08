@@ -11,6 +11,7 @@ REPORT_GAS=true npx hardhat test
 npx hardhat node
 npx hardhat run scripts/deploy.js
 npx hardhat run scripts/deploy-erc20.js --network alfajores
+npx hardhat verify 0x1e088a944DCE86d64ecb72Aa06657DF409cc50d7 --contract contracts/OdoyaRecompensa.sol:OdoyaRecompensa --network alfajores
 ```
 
 ## Dependencias
