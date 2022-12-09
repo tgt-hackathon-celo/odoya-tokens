@@ -11,7 +11,7 @@ REPORT_GAS=true npx hardhat test
 //npx hardhat node
 npx hardhat run scripts/deploy-nft.js --network alfajores
 npx hardhat run scripts/deploy-erc20.js --network alfajores
-npx hardhat verify 0x58BE0c4b2CB3CC5AD27A3D7560b453042B271C88 --contract contracts/OdoyaRecompensa.sol:OdoyaRecompensa --network alfajores
+npx hardhat verify 0xB38d1142c8ee3f3C37140C8A4A1D3eE1bFA2E277 --contract contracts/OdoyaRecompensa.sol:OdoyaRecompensa --network alfajores
 ```
 
 ## Dependencias

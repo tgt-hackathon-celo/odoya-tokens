@@ -24,6 +24,7 @@ contract OdoyaRecompensa is ERC20, ERC20Burnable, Pausable, Ownable, ERC20Permit
     mapping (address => bool) public allowedLeaders;
     uint public regenActionCounter;
     mapping (uint => RegenAction) public regenActionPlanned;    
+    uint constant public NUMMAXTOKENGIVENPERACTION = 1000;
 
     event NewRegenAction(string title, uint when, string where);
 
@@ -67,7 +68,7 @@ contract OdoyaRecompensa is ERC20, ERC20Burnable, Pausable, Ownable, ERC20Permit
         require(allowedLeaders[_leader], "Leader must be previously approved");
         require(_when > block.timestamp, "Action must be planned to the future");
         require(_totalRewards > 0, "Total Rewards must be greater than zero");
-        require(_totalRewards < (1000000*(1**decimals())), "Total Rewards must be less than 1000000 tokens");
+        require(_totalRewards < maxTokensPerAction(), "Total Rewards must be less than 1000000 tokens");
         OdoyaNFT nft = new OdoyaNFT(_title, symbol());
         RegenAction memory ra = RegenAction(_leader, address(nft), _title, _place, _when, _totalRewards, _totalRewards, true);
         regenActionCounter++;
@@ -82,6 +83,10 @@ contract OdoyaRecompensa is ERC20, ERC20Burnable, Pausable, Ownable, ERC20Permit
     function removeLeader(address _oldLeader) public onlyOwner {
         require(allowedLeaders[_oldLeader], "Or leader not exist or it was already removed");
         allowedLeaders[_oldLeader] = false;
+    }
+
+    function maxTokensPerAction() view public returns (uint) {
+        return NUMMAXTOKENGIVENPERACTION*(10**decimals());
     }
 
 }

@@ -2177,8 +2177,8 @@
       ]
     },
     "/Users/jeffprestes/projetos/go/src/github.com/tgt-hackathon-celo/odoya-tokens/contracts/OdoyaRecompensa.sol": {
-      "lastModificationDate": 1670590341151,
-      "contentHash": "c2eff91b085f0f2c652f32ea174d350f",
+      "lastModificationDate": 1670593995072,
+      "contentHash": "22f64ea709377bf6b8d99287520d4bd0",
       "sourceName": "contracts/OdoyaRecompensa.sol",
       "solcConfig": {
         "version": "0.8.17",

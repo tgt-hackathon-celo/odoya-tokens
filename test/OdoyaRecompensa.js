@@ -17,13 +17,20 @@ describe("OdoyaRecompensa", function () {
     return { odoyaToken, owner };
   }
 
-  describe("Deployment", function () {
+  describe("Deployment", async function () {
     it("Should start with no tokens minted", async function () {
       const { odoyaToken } = await loadFixture(deploy);
-
       expect(await odoyaToken.totalSupply()).to.equal(0);
+      
+    });
+    it("Should allow to give only 1000 tokens per action", async function () {
+      const { odoyaToken } = await loadFixture(deploy);
+      const expectedTotal = ethers.BigNumber.from("1000000000000000000000");
+      expect(await odoyaToken.maxTokensPerAction()).to.equal(expectedTotal);
+      //console.log("\nmax tokens", (await odoyaToken.maxTokensPerAction()), "\n");
     });
   });
+
 
   describe("AddActions", async function () {    
     it("Should register action", async function () {
