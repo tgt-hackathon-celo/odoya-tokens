@@ -2133,8 +2133,8 @@
       ]
     },
     "/Users/jeffprestes/projetos/go/src/github.com/tgt-hackathon-celo/odoya-tokens/contracts/OdoyaNFT.sol": {
-      "lastModificationDate": 1670589078049,
-      "contentHash": "3d36ced9610efe2c7144910846d65a3f",
+      "lastModificationDate": 1670595698527,
+      "contentHash": "b6e8660156101863800c079f5dee3a78",
       "sourceName": "contracts/OdoyaNFT.sol",
       "solcConfig": {
         "version": "0.8.17",
