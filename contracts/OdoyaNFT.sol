@@ -17,7 +17,7 @@ contract OdoyaNFT is ERC721, ERC721Enumerable, ERC721URIStorage, ERC721Burnable,
     constructor(string memory _title, string memory _symbol) ERC721(_title, _symbol) {}
 
     function _baseURI() internal pure override returns (string memory) {
-        return "https://tgt-hackathon-celo.github.io/odoya-tokens/nft/";
+        return "https://gateway.pinata.cloud/ipfs/QmfEtZ7NoaUR6PA8WSeVEGd71jkicGjSPgZhjW2LgbBoSU";
     }
 
     function safeMint(address to) public onlyOwner {
@@ -47,8 +47,7 @@ contract OdoyaNFT is ERC721, ERC721Enumerable, ERC721URIStorage, ERC721Burnable,
         override(ERC721, ERC721URIStorage)
         returns (string memory)
     {
-        string memory tmp = string(abi.encodePacked(_baseURI(), "metadata.json"));
-        return tmp;
+        return _baseURI();
     }
 
     function safeTransferFrom(
