@@ -2133,8 +2133,8 @@
       ]
     },
     "/Users/jeffprestes/projetos/go/src/github.com/tgt-hackathon-celo/odoya-tokens/contracts/OdoyaNFT.sol": {
-      "lastModificationDate": 1670524430137,
-      "contentHash": "153534f819f4546575abc59eadf51fba",
+      "lastModificationDate": 1670589078049,
+      "contentHash": "3d36ced9610efe2c7144910846d65a3f",
       "sourceName": "contracts/OdoyaNFT.sol",
       "solcConfig": {
         "version": "0.8.17",
@@ -2177,7 +2177,7 @@
       ]
     },
     "/Users/jeffprestes/projetos/go/src/github.com/tgt-hackathon-celo/odoya-tokens/contracts/OdoyaRecompensa.sol": {
-      "lastModificationDate": 1670524835048,
+      "lastModificationDate": 1670590341151,
       "contentHash": "c2eff91b085f0f2c652f32ea174d350f",
       "sourceName": "contracts/OdoyaRecompensa.sol",
       "solcConfig": {
